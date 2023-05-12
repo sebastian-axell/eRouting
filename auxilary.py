@@ -355,36 +355,6 @@ def construct_edge_data(
     new_edge["key"] = 0
     return new_edge
 
-graph_settings = {
-    "show": False,
-    "close": False,
-    "bgcolor": "#FFFFFF",  # background color of the plot
-    "node_color": "#FF7F50",  # color of the nodes
-    "node_size": 1,  # size of the nodes: if 0, skip plotting them
-    "node_alpha": None,  # opacity of the
-    "node_edgecolor": "none",  # color of the nodes' markers' borders
-    "node_zorder": 1,  # zorder to plot nodes: edges are always 1
-    "edge_color": "#32CD32",  # color of the edges)
-    "edge_linewidth": 1,
-    "figsize": (18,18)
-}
-
-def print_graph(graph):
-    fig,ax = ox.plot_graph(
-        graph, show=graph_settings['show'], 
-        close=graph_settings['close'], 
-        bgcolor=graph_settings['bgcolor'],  # background color of the plot
-        node_color=graph_settings['node_color'],  # color of the nodes
-        node_size=graph_settings['node_size'],  # size of the nodes: if 0, skip plotting them
-        node_alpha=graph_settings['node_alpha'],  # opacity of the
-        node_edgecolor=graph_settings['node_edgecolor'],  # color of the nodes' markers' borders
-        node_zorder=graph_settings['node_zorder'],  # zorder to plot nodes: edges are always 1
-        edge_color=graph_settings['edge_color'],  # color of the edges)
-        edge_linewidth=graph_settings['edge_linewidth'],
-        figsize=graph_settings['figsize']
-    )
-    return fig, ax
-
 def print_route(graph: nx.MultiGraph, route: List[int], name: str):
     """prints a route to the test directory of the data director of the current directory to a given name
 
@@ -393,7 +363,7 @@ def print_route(graph: nx.MultiGraph, route: List[int], name: str):
         route (List[int])
         name (str)
     """
-    print_graph(graph, "routes", route, 'r')[0].savefig("./data/test/" + name + ".png")
+    print_graph(graph, "route", route)[0].savefig("./data/test/" + name + ".png")
 
 def calculate_charging_time_dijkstra(charging_stops: List[int]) -> float:
     """returns the total charging time
