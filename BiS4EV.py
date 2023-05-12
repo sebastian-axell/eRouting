@@ -773,7 +773,7 @@ class bis_4_ev:
             edge (Tuple[int,int])
         """
         u, x = edge
-        # dis is alwats better energy consumption from 𝑠 to 𝑢
+        # dis is alwats better energy consumption from s to u
         walk_from_u_to_x = self.nodes[u]["dis_f"] + self._get_edge_data(u, x)
         walk_from_u_cs_to_x = self.nodes[u]["dis_f_cs"] + self._get_edge_data(u, x)
         if self.nodes[x]["dis_f"] > walk_from_u_to_x:
@@ -797,7 +797,7 @@ class bis_4_ev:
         Args:
             edge (Tuple[int, int])
         """
-        # dis is always better energy consumption from 𝑠 to 𝑢
+        # dis is always better energy consumption from s to u
         v, x = edge
         walk_from_v_to_x = self.nodes[v]["dis_b"] + self._get_edge_data(v, x)
         walk_from_v_cs_to_x = self.nodes[v]["dis_b_cs"] + self._get_edge_data(v, x)
