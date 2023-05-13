@@ -37,7 +37,7 @@ places_dict = {
     "La Massana": 2975949958,
     "Ordino": 9721876525,
     "Canillo": 53275523,
-    "El Pas de la Casa": 7296679289, 
+    "El Pas de la Casa": 7296679289,
     "Arinsal": 52204280,
     "La Margineda": 277697480,
     "Sispony": 3268159387,
@@ -107,18 +107,6 @@ def get_graph(
     graph = construct_graph(location, nbr_charging_stations, seed, places_dict.values())
     processed_graph = graph.get_pre_processed_graph()
     return processed_graph
-
-
-def get_test_data():
-    all_paths = []
-    run_test_suite(
-        function_type="bis4ev", route_type="easy", iteration_nbr=10, paths=all_paths
-    )
-    if not all_paths:
-        all_paths = read_paths("bis4ev", "easy")
-    run_test_suite(
-        function_type="dijkstra", route_type="easy", iteration_nbr=10, paths=all_paths
-    )
 
 
 def run_test_suite(
@@ -458,4 +446,12 @@ def add_metric(df: DF, index: int, label: str, values: List[float]):
 
 
 if __name__ == "__main__":
-    get_test_data()
+    all_paths = []
+    run_test_suite(
+        function_type="bis4ev", route_type="easy", iteration_nbr=10, paths=all_paths
+    )
+    if not all_paths:
+        all_paths = read_paths("bis4ev", "easy")
+    run_test_suite(
+        function_type="dijkstra", route_type="easy", iteration_nbr=10, paths=all_paths
+    )
